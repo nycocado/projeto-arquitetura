@@ -45,6 +45,7 @@ int main(int argc, char **argv)
     printf("k - Ligar Led Verde\n");
     printf("l - Desligar Led Verde\n");
     printf("z - Mostrar Tabela de Eventos\n");
+    printf("c - Mostrar Controles\n");
     printf("q - Sair\n");
     printf("\n");
 
@@ -78,7 +79,7 @@ int main(int argc, char **argv)
     // Fim do código para fazer tudo funcionar
     while (c != 'q') // Enquanto o usuário não digitar 'q', o programa vai continuar rodando
     {
-        if (read(tty_fd, &c, 1) > 0 && c != '0' && c != '1' && c != '2') // Se o arduino mandar um caractere, ele vai ser escrito no terminal, exceto os caracteres de ID enviados juntos com a mensagem
+        if (read(tty_fd, &c, 1) > 0 && c != '0' && c != '1' && c != '2' && c != '3') // Se o arduino mandar um caractere, ele vai ser escrito no terminal, exceto os caracteres de ID enviados juntos com a mensagem
         {
             write(STDOUT_FILENO, &c, 1); // Escreve o caractere no terminal
         }
@@ -122,6 +123,19 @@ int main(int argc, char **argv)
                     write(STDOUT_FILENO, "\r ", 1);                                         // Retorna a posicao do cursor para o início da linha
                 }
             }
+        }
+        if(c == '3') //Se o caractere pressionado for c, os comandos de controle são mostrados no terminal
+        {
+            // Escreve os comandos de controle no terminal
+            write(STDIN_FILENO, "\n\r", 1);
+            write(STDIN_FILENO, "Comandos de Controle:\n\r", 23);
+            write(STDIN_FILENO, "i - Ligar Led Vermelho\n\r", 25);
+            write(STDIN_FILENO, "o - Desligar Led Vermelho\n\r", 28);
+            write(STDIN_FILENO, "k - Ligar Led Verde\n\r", 22);
+            write(STDIN_FILENO, "l - Desligar Led Verde\n\r", 25);
+            write(STDIN_FILENO, "z - Mostrar Tabela de Eventos\n\r", 32);
+            write(STDIN_FILENO, "c - Mostrar Controles\n\r", 24);
+            write(STDIN_FILENO, "q - Sair\n\r", 11);
         }
     }
 
