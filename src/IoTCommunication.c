@@ -9,6 +9,12 @@
 #include <termios.h>
 #include "list.h" // Essa biblioteca foi feita na unidade curricular de Programação e Algoritmos, é usada para comandar uma lista ligada simples
 
+#ifdef _WIN32
+    #define CLEAR_SCREEN "cls" // Se for Windows, define o comando para limpar a tela
+#else
+    #define CLEAR_SCREEN "clear" // Se for Linux, define o comando para limpar a tela
+#endif
+
 typedef struct Event_ *Event; // Defino um ponteiro para a struct Event_
 
 struct Event_ // Defino a struct Event_
@@ -31,7 +37,7 @@ int main(int argc, char **argv)
     struct termios stdio;
     struct termios old_stdio;
     int tty_fd; // File descriptor para a comunicação com o arduino
-
+    system(CLEAR_SCREEN); // Limpa a tela do terminal
     printf("   _____            _             _        _____ ____ _______\n");
     printf("  / ____|          | |           | |      |_   _/ __ \\__   __|\n");
     printf(" | |     ___  _ __ | |_ _ __ ___ | | ___    | || |  | | | |   \n");
