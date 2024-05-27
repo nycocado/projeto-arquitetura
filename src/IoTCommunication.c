@@ -50,6 +50,8 @@ int main(int argc, char **argv)
     printf("o - Desligar Led Vermelho\n");
     printf("k - Ligar Led Verde\n");
     printf("l - Desligar Led Verde\n");
+    printf("b - Ligar Buzzer\n");
+    printf("n - Desligar Buzzer\n");
     printf("z - Mostrar Tabela de Eventos\n");
     printf("c - Mostrar Controles\n");
     printf("q - Sair\n");
@@ -139,6 +141,8 @@ int main(int argc, char **argv)
             write(STDIN_FILENO, "o - Desligar Led Vermelho\n\r", 28);
             write(STDIN_FILENO, "k - Ligar Led Verde\n\r", 22);
             write(STDIN_FILENO, "l - Desligar Led Verde\n\r", 25);
+            write(STDIN_FILENO, "b - Ligar Alarme\n\r", 22);
+            write(STDIN_FILENO, "n - Desligar Alarme\n\r", 25);
             write(STDIN_FILENO, "z - Mostrar Tabela de Eventos\n\r", 32);
             write(STDIN_FILENO, "c - Mostrar Controles\n\r", 24);
             write(STDIN_FILENO, "q - Sair\n\r", 11);
